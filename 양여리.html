@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빛나는 일상, 우리들의 친구를 소개합니다</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/subsets/Paperlogy-dynamic-subset.css" type="text/css"/>
+
+    <style>
+        body {
+            font-family: "Paperlogy", -apple-system, BlinkMacSystemFont, "Segoe UI",Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            background-color: #ffffff;
+            color: #212121;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 45vh;
+            width: 100%;
+            max-width: 900px;
+            max-height: 450px;
+        }
+        .kpi-card {
+            background: linear-gradient(145deg, #fffbe0, #fff7a9); /* Light Yellow/Amber Gradient */
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(255, 202, 40, 0.2);
+            border: 1px solid #ffca28;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(255, 202, 40, 0.3);
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #ffca28, #42a5f5); /* Amber to Light Blue */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #4b5563;
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+        }
+        .content-card {
+             background-color: #f9fafb;
+             border: 1px solid #e5e7eb;
+             border-radius: 1rem;
+             padding: 1.5rem;
+        }
+        .text-amber {
+            color: #ffca28;
+        }
+        .text-light-blue {
+            color: #42a5f5;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-gray-50 py-20 text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-5xl md:text-7xl font-black text-gray-900 leading-tight">빛나는 일상, 우리들의 친구 '양여리'를 소개합니다</h1>
+            <p class="text-xl text-gray-600 mt-4 max-w-3xl mx-auto">매력적인 별명과 뛰어난 친화력을 자랑하는, 활력 넘치는 친구의 다면적인 매력 탐구.</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+
+        <section id="economic" class="text-center mb-24">
+            <h2 class="section-title">핵심 매력 엔진: '양여리'가 창출하는 가치</h2>
+            <p class="section-subtitle">친구 '양여리'는 모임의 분위기를 주도하고, 일상 속에서 자신만의 스타일을 구축하며 긍정적인 에너지를 발산합니다. 그녀의 상반된 매력이 모임의 핵심 동력으로 떠오르고 있습니다.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="kpi-card">
+                    <h3 class="text-xl font-bold text-gray-900">친화력 별명 지수</h3>
+                    <p class="text-5xl font-extrabold text-light-blue mt-2">양여리<span class="text-lg font-medium text-green-600 ml-2">여리여리</span></p>
+                </div>
+                <div class="kpi-card">
+                    <h3 class="text-xl font-bold text-gray-900">1:1 주량 기준치</h3>
+                    <p class="text-5xl font-extrabold text-light-blue mt-2">소주 2병,<br>맥주 4병</p>
+                </div>
+                 <div class="kpi-card">
+                    <h3 class="text-xl font-bold text-gray-900">스타일 소화 능력</h3>
+                    <p class="text-5xl font-extrabold text-light-blue mt-2">똑단발<br>찰떡 지수</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-3 content-card p-6">
+                    <h3 class="text-2xl font-bold mb-4">긍정 지수 변화 추이 (2022-2024, 가상 데이터)</h3>
+                    <p class="text-gray-600 mb-6">결혼 후에도 변함없이 활발한 활동력으로 긍정적인 분위기를 유지하고 있습니다.</p>
+                    <div class="chart-container"><canvas id="albumExportsChart"></canvas></div>
+                </div>
+                <div class="lg:col-span-2 content-card p-6">
+                    <h3 class="text-2xl font-bold mb-4">일상 활동 비중 (가상 데이터)</h3>
+                    <p class="text-gray-600 mb-6">친목과 스타일 관리에 많은 에너지를 쏟으며 활력 넘치는 일상을 만듭니다.</p>
+                    <div class="chart-container"><canvas id="revenueSourceChart"></canvas></div>
+                </div>
+            </div>
+             <div class="mt-8 content-card p-6">
+                <h3 class="text-2xl font-bold mb-4">핵심 매력 점유율 (가상 데이터)</h3>
+                <p class="text-gray-600 mb-6">'여리여리'한 별명과 뛰어난 주량이 균형을 이루며 매력 포인트를 구축합니다.</p>
+                <div class="chart-container"><canvas id="topCountriesChart"></canvas></div>
+            </div>
+        </section>
+        
+        <section id="cultural" class="text-center mb-24">
+            <h2 class="section-title">소프트 파워: 모임에 스며드는 매력</h2>
+            <p class="section-subtitle">그녀의 긍정적인 태도와 스타일은 모임의 분위기를 끌어올리는 강력한 소프트 파워를 발휘합니다.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="content-card text-left p-6">
+                    <div class="text-5xl mb-4 text-amber">🗣️</div>
+                    <h3 class="text-xl font-bold mb-2">언어의 장벽을 넘다</h3>
+                    <p class="text-gray-600">'양여리'라는 별명이 주는 '여리여리'한 인상과 실제 성격 간의 반전 매력은 늘 흥미를 유발합니다.</p>
+                </div>
+                <div class="content-card text-left p-6">
+                    <div class="text-5xl mb-4 text-amber">🇰🇷</div>
+                    <h3 class="text-xl font-bold mb-2">모임의 얼굴이 되다</h3>
+                    <p class="text-gray-600">뛰어난 주량으로 어떤 모임에서든 분위기를 주도하는 압도적 친화력을 자랑합니다.</p>
+                </div>
+                <div class="content-card text-left p-6">
+                    <div class="text-5xl mb-4 text-amber">🤝</div>
+                    <h3 class="text-xl font-bold mb-2">소프트 파워 외교</h3>
+                    <p class="text-gray-600">똑단발 스타일을 완벽하게 소화하는 세련된 패션 감각은 주변에 긍정적인 영향을 줍니다.</p>
+                </div>
+                 <div class="content-card text-left p-6">
+                    <div class="text-5xl mb-4 text-amber">🌐</div>
+                    <h3 class="text-xl font-bold mb-2">트렌드 견인</h3>
+                    <p class="text-gray-600">아줌마 같지 않은 세련된 새댁으로, 새로운 라이프스타일 트렌드를 이끌어가는 매력이 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="fandom" class="text-center mb-24">
+            <h2 class="section-title">관계의 세계: 빛과 그림자</h2>
+            <p class="section-subtitle">그녀의 열정적인 친목 활동은 모임의 성장에 원동력이 되지만, 때로는 예상치 못한 '주량의 그림자'를 동반하기도 합니다.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="content-card p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-light-blue">💚 긍정적 힘</h3>
+                     <ul class="text-left list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>변치 않는 활발함:</strong> 결혼 후에도 변치 않는 활발함과 모임 참석률로 모두에게 귀감이 됩니다.</li>
+                        <li><strong>분위기 메이커:</strong> 어떤 자리에서도 분위기를 화기애애하게 만드는 밝은 에너지가 넘칩니다.</li>
+                    </ul>
+                </div>
+                 <div class="content-card p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-amber">💔 리스크 요인 (그림자)</h3>
+                    <ul class="text-left list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>상대방 컨디션 리스크:</strong> 압도적인 주량으로 인해 1:1 술자리 시 상대방의 컨디션 관리에 주의가 필요합니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="tech" class="text-center mb-24">
+            <h2 class="section-title">미래와 스타일: 양여리의 혁신</h2>
+            <p class="section-subtitle">그녀의 일상 속 모습은 새로운 트렌드를 제시하고, 매번 긍정적인 변화를 보여주며 미래를 열고 있습니다.</p>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="content-card text-left p-6">
+                    <h3 class="text-xl font-bold mb-2">AI급 스타일 관리</h3>
+                    <p class="text-gray-600">흐트러짐 없는 완벽한 똑단발을 유지하는 철저하고 효율적인 자기 관리 능력을 보여줍니다.</p>
+                </div>
+                 <div class="content-card text-left p-6">
+                    <h3 class="text-xl font-bold mb-2">입체적 매력</h3>
+                    <p class="text-gray-600">'여리여리'함과 '주당'이라는 상반된 이미지를 동시에 가진 입체적인 매력으로 사람들의 이목을 사로잡습니다.</p>
+                </div>
+                 <div class="content-card text-left p-6">
+                    <h3 class="text-xl font-bold mb-2">행복한 일상 공유</h3>
+                    <p class="text-gray-600">주변에서 결혼을 아주 잘했다는 소문이 자자하며, 그녀의 행복한 생활이 모임에 긍정적인 분위기를 전파합니다.</p>
+                </div>
+                 <div class="content-card text-left p-6">
+                    <h3 class="text-xl font-bold mb-2">핵심 존재감</h3>
+                    <p class="text-gray-600">모임의 활력소로서 빠지면 안 되는 필수적인 존재감을 가지고 있으며, 모두에게 사랑받는 친구입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="outlook" class="text-center">
+            <h2 class="section-title">미래 전망: 모임을 향한 항해</h2>
+            <p class="section-subtitle">그녀는 지속 가능한 관계 유지를 위해 기회 요인을 극대화하고 잠재적 위협에 대비하는 균형 감각이 중요합니다.</p>
+            <div class="max-w-4xl mx-auto">
+                 <div class="outlook-card space-y-2 mb-4 content-card">
+                    <button class="w-full text-left p-2 font-bold text-xl flex justify-between items-center text-light-blue" data-target="opportunity-content">
+                        <span>🚀 기회 요인 (Opportunities)</span>
+                        <span class="transform transition-transform duration-300">▼</span>
+                    </button>
+                    <div id="opportunity-content" class="outlook-content hidden px-4 pb-4 text-left text-gray-700">
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>세련된 새댁으로서 모임을 이끌 리더십 발전 및 신규 모임 확장 가능성</li>
+                            <li>긍정적인 에너지를 바탕으로 주변 인간관계의 폭과 깊이 확장</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="outlook-card space-y-2 mb-4 content-card">
+                    <button class="w-full text-left p-2 font-bold text-xl flex justify-between items-center text-amber" data-target="threat-content">
+                        <span>🛡️ 위협 요인 (Threats)</span>
+                        <span class="transform transition-transform duration-300">▼</span>
+                    </button>
+                    <div id="threat-content" class="outlook-content hidden px-4 pb-4 text-left text-gray-700">
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>높은 주량으로 인한 잠재적 간 건강 위협 관리 필요</li>
+                            <li>너무 완벽해 보이는 모습 때문에 주변 친구들이 느끼는 상대적 박탈감 관리</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="outlook-card space-y-2 content-card">
+                    <button class="w-full text-left p-2 font-bold text-xl flex justify-between items-center text-light-blue" data-target="scenario-content">
+                        <span>🔮 미래 예측 시나리오 (Scenarios)</span>
+                        <span class="transform transition-transform duration-300">▼</span>
+                    </button>
+                    <div id="scenario-content" class="outlook-content hidden px-4 pb-4 text-left text-gray-700">
+                        <p class="font-semibold">1. 긍정적 시나리오: '모임의 전설'</p>
+                        <p class="mb-2">결혼 후에도 변함없는 활력과 스타일로 모든 모임에서 사랑받는, 대체 불가능한 핵심 멤버로 자리 잡습니다.</p>
+                        <p class="font-semibold">2. 현실적 시나리오: '지속 가능한 우정'</p>
+                        <p>현재의 활발한 활동을 안정적으로 유지하며, 여리여리함과 주당이라는 매력으로 꾸준히 관계를 이어갑니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="text-center py-8 mt-16 bg-gray-100">
+        <p class="text-gray-500">본 인포그래픽은 친구의 소개를 기반으로 제작되었습니다.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const chartColors = {
+        gradient1: (ctx) => {
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(66, 165, 245, 0.7)'); // Light Blue
+            gradient.addColorStop(1, 'rgba(255, 202, 40, 0.3)'); // Amber
+            return gradient;
+        },
+        amber: 'rgba(255, 202, 40, 0.8)',
+        amberBorder: 'rgba(255, 202, 40, 1)',
+        lightBlue: 'rgba(66, 165, 245, 0.8)',
+        lightBlueBorder: 'rgba(66, 165, 245, 1)',
+        blue: 'rgba(54, 162, 235, 0.8)',
+        blueBorder: 'rgba(54, 162, 235, 1)',
+        red: 'rgba(255, 99, 132, 0.8)',
+        redBorder: 'rgba(255, 99, 132, 1)',
+        green: 'rgba(75, 192, 192, 0.8)',
+        greenBorder: 'rgba(75, 192, 192, 1)',
+    };
+    
+    // Generic tooltip configuration
+    const tooltipConfig = {
+        callbacks: {
+            title: function(tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                  return label.join(' ');
+                } else {
+                  return label;
+                }
+            }
+        }
+    };
+
+    // Chart 1: Line Chart (긍정 지수)
+    const albumExportsCtx = document.getElementById('albumExportsChart');
+    if(albumExportsCtx) {
+        new Chart(albumExportsCtx, {
+            type: 'line',
+            data: {
+                labels: ['2022년 1분기', '2022년 4분기', '2023년 2분기', '2023년 4분기', '2024년 1분기'],
+                datasets: [{
+                    label: '긍정 지수 (100점 만점)',
+                    data: [80, 85, 92, 95, 98],
+                    borderColor: chartColors.lightBlueBorder,
+                    backgroundColor: chartColors.gradient1(albumExportsCtx.getContext('2d')),
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: chartColors.lightBlueBorder,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        ticks: {
+                            callback: value => value + '점'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: tooltipConfig,
+                }
+            }
+        });
+    }
+
+    // Chart 2: Doughnut Chart (일상 활동 비중)
+    const revenueSourceCtx = document.getElementById('revenueSourceChart');
+    if(revenueSourceCtx){
+        new Chart(revenueSourceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['친목 (45%)', '스타일 관리 (30%)', '여가/취미 (25%)'],
+                datasets: [{
+                    data: [45, 30, 25],
+                    backgroundColor: [chartColors.lightBlue, chartColors.amber, chartColors.red],
+                    borderColor: '#fff',
+                    borderWidth: 4,
+                    hoverOffset: 15
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                         ...tooltipConfig,
+                         callbacks: {
+                            ...tooltipConfig.callbacks,
+                            label: function(context) {
+                                let value = context.raw;
+                                return `${context.label.split(' (')[0]}: ${value}%`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+    
+    // Chart 3: Horizontal Bar Chart (매력 점유율)
+    const topCountriesCtx = document.getElementById('topCountriesChart');
+    if(topCountriesCtx) {
+        new Chart(topCountriesCtx, {
+            type: 'bar',
+            data: {
+                labels: ['여리여리함', '똑단발 스타일', '친화력', '주량'],
+                datasets: [{
+                    label: '매력 점유율 (%)',
+                    data: [100, 90, 85, 80],
+                    backgroundColor: [
+                        chartColors.lightBlue, chartColors.amber, chartColors.green, chartColors.red, 
+                    ],
+                    borderRadius: 5,
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { display: true, text: '매력 점유율 (%)' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: tooltipConfig,
+                }
+            }
+        });
+    }
+
+    // Outlook Accordion
+    const outlookButtons = document.querySelectorAll('.outlook-card button');
+    outlookButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.dataset.target;
+            const content = document.getElementById(targetId);
+            const icon = button.querySelector('span:last-child');
+            
+            // Close all other open sections
+            document.querySelectorAll('.outlook-content').forEach(c => {
+                 if (c !== content && !c.classList.contains('hidden')) {
+                     c.classList.add('hidden');
+                     c.closest('.outlook-card').querySelector('span:last-child').classList.remove('rotate-180');
+                 }
+            });
+            
+            // Toggle the current section
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        });
+    });
+
+});
+</script>
+</body>
+</html>
